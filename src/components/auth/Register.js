@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navbar } from '../navb/Navbar'
-import { Link } from 'react-router-dom'
+import { RegisterForm } from './RegisterForm'
 export const Register = () => {
     return (
         <>
