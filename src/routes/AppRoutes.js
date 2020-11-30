@@ -6,7 +6,10 @@ import { PublicRoute } from './PublicRoutes'
 import { Login } from '../components/auth/Login'
 import { Register } from '../components/auth/Register'
 
+
 export const AppRoutes = () => {
+
+    
     return (
         <Router>
             <div>
