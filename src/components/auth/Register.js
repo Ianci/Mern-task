@@ -8,14 +8,7 @@ export const Register = () => {
         <div className="register__container">
             <div className="register___form">
             <h1 className="register__h1">Cree su primera cuenta ahora!</h1>
-                <form className="register__form-form">
-                    <input type="text" className="register__input" name="name" autoComplete="off" placeholder="Introduce your name"/>
-                    <input type="email" className="register__input" name="email"  autoComplete="off" placeholder="Introduce your email"/>
-                    <input type="password" className="register__input" name="password" autoComplete="off" placeholder="Introduce your password"/>
-                    <input type="password" className="register__input" name="repeat"autoComplete="off" placeholder="Repeat your password"/>
-                    <button type="submit" className="register__btn-submit">Crear cuenta</button>
-                    <p className="register__paragraph-desc already">Ya tienes cuenta? Ingresa <Link to="/login" style={{textDecoration: "none"}}><strong className="register__paragraph-desc-t">acá</strong></Link></p>
-                </form>
+               <RegisterForm />
             </div>
             <div className="register__right-content">
                 <div className="register__container-right">
