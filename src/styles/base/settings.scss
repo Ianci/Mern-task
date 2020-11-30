@@ -1,0 +1,25 @@
+$primary:  #071013;
+$background: #FFAEBC;
+$white: #fff;
+@mixin phones {
+    @media only screen and (max-width: 600px){
+        @content;
+    }
+}
+@mixin small {
+    @media only screen and (min-width: 600px) {
+      @content;
+    }
+  }
+  
+  @mixin medium {
+    @media only screen and (min-width: 1024px) {
+      @content;
+    }
+  }
+  
+  @mixin large {
+    @media only screen and (min-width: 1440px) {
+      @content;
+    }
+}
