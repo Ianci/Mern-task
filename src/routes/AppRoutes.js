@@ -7,12 +7,14 @@ import { Login } from '../components/auth/Login'
 import { Register } from '../components/auth/Register'
 
 
+
 export const AppRoutes = () => {
 
     
     return (
         <Router>
             <div>
+            
             <Switch>
             <PublicRoute exact path="/" component={Register}/>
             <PublicRoute  path="/login" component={Login}/>

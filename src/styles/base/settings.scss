@@ -1,6 +1,11 @@
 $primary:  #071013;
 $background: #FFAEBC;
+$backgroundform: #310A31;
 $white: #fff;
+$backgroundbuttons: #FF3366;
+$backgroundnavbar: #202C39;
+$black: #0F110C;
+
 @mixin phones {
     @media only screen and (max-width: 600px){
         @content;
