@@ -1,0 +1,57 @@
+.maincontent__container {
+    width: 1200px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.maincontent-landingpage{
+  
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 4em;
+}
+.maincontent__landingpage-img {
+    width: 600px;
+    height: 500px;
+}
+.maincontent__formTask{
+    display: flex;
+    justify-content: center;
+    
+}
+.maincontent__h1 {
+    text-align: center;
+}
+.maincontent__form-box{
+    padding: 2em 7em;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
+    &:hover {
+        box-shadow: 0 0 5px #CE4257, 0 0 15px #CE4257, 0 0 30px #CE4257, 0 0 55px #CE4257;
+    }
+}
+
+.maincontent__form-input{
+    width: 450px;
+}
+.maincontent__form-btn {
+    width: 300px;
+}
+.maincontent__todo-list{
+    width: 1000px;
+    max-width: 1000px;
+}
+.maincontent__todo-div{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #CE4257;
+    margin: 1em;
+    padding: 0.3em;
+}
+.maincontent_todo-name{
+    font-size: 1.3rem;
+    
+}

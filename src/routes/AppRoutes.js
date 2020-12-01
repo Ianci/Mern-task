@@ -18,7 +18,7 @@ export const AppRoutes = () => {
             <Switch>
             <PublicRoute exact path="/" component={Register}/>
             <PublicRoute  path="/login" component={Login}/>
-            <PrivateRoute  path="/home" component={TaskScreen}/>
+            <Route path="/home" component={TaskScreen}/>
             <Redirect to="/login" />
             </Switch>
             </div>
