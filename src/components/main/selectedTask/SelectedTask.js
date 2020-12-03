@@ -10,7 +10,7 @@ export const SelectedTask = () => {
     if(!task) return <LandingPage />
 
     let name = task.map(taskname => taskname.name)
-    console.log(name)
+    
     
     return (
         <div>

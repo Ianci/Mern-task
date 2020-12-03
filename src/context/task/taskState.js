@@ -39,6 +39,14 @@ export const TaskState = props => {
         })
     }
 
+    //Delete task
+    const deleteTask = task => {
+        dispatch({
+            type: types.deleteTaskActive,
+            payload: task
+        })
+    }
+
     return (
         <taskContext.Provider 
         value={{
@@ -47,7 +55,8 @@ export const TaskState = props => {
             task: state.task,
             getTask,
             newTask,
-            activeTask
+            activeTask,
+            deleteTask
         }}
         >
             {props.children}
