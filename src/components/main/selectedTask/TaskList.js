@@ -3,6 +3,7 @@ import { todoContext } from '../../../context/todos/todoContext'
 import { Todo } from './Task'
 
 export const TaskList = () => {
+    
     const { todosForCurrentTask }= useContext(todoContext)
 
   
@@ -14,7 +15,8 @@ export const TaskList = () => {
             <p>Crea una nueva tarea</p>
             :
             todosForCurrentTask.map(todo=> (
-                <Todo 
+                <Todo
+                key={todo.id}
                 todo={todo}/>
             ))
             }

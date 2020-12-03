@@ -13,11 +13,11 @@ export const todoReducer = (state, action) => {
                 ...state,
                 todos: [...state.todos, payload]
             }
-        case types.deleteTodo: {
-            return{
-            todosForCurrentTask: state.todos.filter(todo => todo.taskId !== payload)
-            }
-        }
+        case types.deleteTodo:
+            return {
+                ...state,
+                todos: state.todos.filter(todo => todo.id !== payload)
+            } 
     
         default:
             return state

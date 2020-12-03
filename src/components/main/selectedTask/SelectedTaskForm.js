@@ -3,18 +3,21 @@ import { todoContext } from '../../../context/todos/todoContext'
 import { useForm } from '../../../hooks/useForm'
 import { uiContext } from '../../../context/ui/uiContext'
 import { taskContext } from '../../../context/task/taskContext'
+import { v4 as uuidv4 } from 'uuid';
+
 export const SelectedTaskForm = () => {
 
     const  {state, handleChange, resetForm} = useForm({todo: ""})
     const { todo } = state
     
     //Distintos context
-    const { newTodo, getTodosActiveProject, deleteTodo } = useContext(todoContext)
+    const { newTodo, getTodosActiveProject} = useContext(todoContext)
     const { task } = useContext(taskContext)
     const { errorTask, setErrorTask } = useContext(uiContext)
     
     
     //Obtener el id de la Task active
+    
     let idTask = task.map(taskId => parseInt(taskId.id))
     const [ number ] = idTask
     
@@ -30,6 +33,8 @@ export const SelectedTaskForm = () => {
         return true
     }
 
+    //Eliminar una tarea
+    
     //Submit function
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -37,7 +42,8 @@ export const SelectedTaskForm = () => {
             const newTodoUser = {
                 todo: todo,
                 state: false,
-                taskId: number
+                taskId: number,
+                id: uuidv4()
             }
             newTodo(newTodoUser)
             getTodosActiveProject(number)

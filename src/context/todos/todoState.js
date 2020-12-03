@@ -7,8 +7,9 @@ export const TodoState = props => {
     
     const initialState = {
         todos: [ 
-            {todo: "La concha de tu madre", state: false , taskId: 1},
-            {todo: "La concha tu madre", state: false , taskId: 2}
+            {id: 1, todo: "La concha de tu madre", state: false , taskId: 1},
+            {id: 2, todo: "La concha tu madre", state: false , taskId: 2},
+            {id: 3, todo: "madre", state: false , taskId: 3}
         ,],
         todosForCurrentTask: null,
     }
