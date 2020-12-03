@@ -1,13 +1,16 @@
-import React from 'react'
+import React, {useContext} from 'react'
+
 import { useForm } from '../../../hooks/useForm'
 export const SelectedTaskForm = () => {
 
     const  {state, handleChange, resetForm} = useForm({todo: ""})
     const { todo } = state
-
+    
+    
     const handleSubmit = (e) => {
         e.preventDefault()
         resetForm()
+        
     }
     
     return (

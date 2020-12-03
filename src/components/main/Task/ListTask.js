@@ -1,25 +1,25 @@
-import React from 'react'
+import React, { useContext, useEffect} from 'react'
 import { Task } from './Task'
-
+import { taskContext } from '../../../context/task/taskContext'
 export const ListTask = () => {
 
-    const array = [
-    {
-        task: "do homework",
-        id: 1
-    },
-    {
-        task: "do homework",
-        id: 2
-    }
-]
+    const {tasks, getTask} = useContext(taskContext)
+    
+    useEffect(() => {
+        getTask()
+    }, [])
+
+    if(tasks.length === 0 ) return null;
     return (
+        
         <ul>
-        {array.map(task=>(
+        {tasks.map(task=>(
             <Task 
             key={task.id}
             task={task}/>
         ))}
         </ul>
+        
+      
     )
 }
