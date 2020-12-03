@@ -5,8 +5,9 @@ import { uiReducer } from './uiReducer';
 
 export const UiState = props => {
     const initialState = {
+        errorTask: null,
         error: null,
-        loading: false
+        errorTodo: null
     }
 
     const [state, dispatch] = useReducer(uiReducer, initialState)
@@ -17,11 +18,28 @@ export const UiState = props => {
             payload: e
         })
     }
+
+    const setErrorTask = e => {
+        dispatch({
+            type: types.setErrorTask,
+            payload: e
+        })
+    }
+    const setErrorTodo = e => {
+        dispatch({
+            type: types.setErrorTodo,
+            payload: e
+        })
+    }
     return (
         <uiContext.Provider value={{
             error: state.error, 
             loading: state.loading,
-            setError
+            errorTask: state.errorTask,
+            errorTodo: state.errorTodo,
+            setError,
+            setErrorTask,
+            setErrorTodo
             }}>
             {props.children}
         </uiContext.Provider>

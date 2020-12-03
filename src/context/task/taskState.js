@@ -5,7 +5,8 @@ import { taskReducer } from './taskReducer'
 
 
 export const TaskState = props => {
-    const tasks  = [{name: "Learn Context" ,id: "1"}, {name: "Learn Redux", id: "2"}, {name:"Learn React", id: "3"}]
+
+    const tasks  = [{name: "Learn Context" ,id: 1}, {name: "Learn Redux", id: 2}, {name:"Learn React", id: 3}]
     const initialState = {
         tasks: [],
         task: null
@@ -32,10 +33,10 @@ export const TaskState = props => {
     }
 
     //activeTask
-    const activeTask = task => {
+    const activeTask = taskId => {
         dispatch({
             type: types.activeTask,
-            payload: task
+            payload: taskId
         })
     }
 

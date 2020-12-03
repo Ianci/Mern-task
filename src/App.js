@@ -1,12 +1,16 @@
 import { AppRoutes } from "./routes/AppRoutes";
 import { TaskState } from './context/task/taskState'
 import { UiState } from './context/ui/uiState'
-
+import { TodoState } from './context/todos/todoState'
 function App() {
   return (
     <TaskState>
       <UiState>
-        <AppRoutes />
+        <TodoState>
+
+          <AppRoutes />
+        
+        </TodoState>
       </UiState>  
     </TaskState>
   );

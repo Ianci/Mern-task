@@ -8,8 +8,8 @@ export const SidebarForm = () => {
     //LocalState del formulario 
     const [ showForm, setShowForm ] = useState(false)
     //uiContext
-    const uiContextState = useContext(uiContext)
-    const { error, setError } = uiContextState
+    const { errorTodo, setErrorTodo} = useContext(uiContext)
+    
     //taskContext
     const taskContextState = useContext(taskContext)
     const { newTask } = taskContextState
@@ -20,11 +20,11 @@ export const SidebarForm = () => {
     //Validation
     const validation = () => {
         if(todo.trim() === ""){
-            setError('Por favor completa este campo')
+            setErrorTodo('Por favor completa este campo')
             return false
         }
         else if(todo.length > 15){
-            setError('Límite de 15 caracteres excedidos')
+            setErrorTodo('Límite de 15 caracteres excedidos')
             return false
         }
         return true
@@ -42,7 +42,7 @@ export const SidebarForm = () => {
                 id: uuidv4()
             }
             newTask(newTaskObj)
-            setError(null)
+            setErrorTodo(null)
             resetForm()
         }
     }
@@ -60,7 +60,8 @@ export const SidebarForm = () => {
                     </form>
                 )
             }
-            {error && <p className="taskScreen__error-msg">{error}</p>}
+            {errorTodo && <p className="taskScreen__error-msg">{errorTodo}</p>}
         </div>
     )
 }
+

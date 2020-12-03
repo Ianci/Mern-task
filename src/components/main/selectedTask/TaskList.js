@@ -1,24 +1,19 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import { todoContext } from '../../../context/todos/todoContext'
 import { Todo } from './Task'
 
 export const TaskList = () => {
-    const array = [
-        {
-            task: "La concha de tu madre",
-            state: true
-        },
-        {
-            task: "La concha de tu madre",
-            state: false
-        },
-    ]
+    const { todosForCurrentTask }= useContext(todoContext)
+
+  
+
     return (
         <div className="maincontent__todo-list">
-            {array.lenght === 0 
+            {todosForCurrentTask.lenght === 0 
             ?
             <p>Crea una nueva tarea</p>
             :
-            array.map(todo=> (
+            todosForCurrentTask.map(todo=> (
                 <Todo 
                 todo={todo}/>
             ))
