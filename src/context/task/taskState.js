@@ -7,7 +7,8 @@ import { taskReducer } from './taskReducer'
 export const TaskState = props => {
     const tasks  = [{name: "Learn Context" ,id: "1"}, {name: "Learn Redux", id: "2"}, {name:"Learn React", id: "3"}]
     const initialState = {
-        tasks: []
+        tasks: [],
+        task: null
     }
 
     //Dispatch para ejecutar las acciones 
@@ -30,14 +31,23 @@ export const TaskState = props => {
         })
     }
 
+    //activeTask
+    const activeTask = task => {
+        dispatch({
+            type: types.activeTask,
+            payload: task
+        })
+    }
 
     return (
         <taskContext.Provider 
         value={{
             tasks: state.tasks,
             showForm: state.showForm,
+            task: state.task,
             getTask,
-            newTask
+            newTask,
+            activeTask
         }}
         >
             {props.children}
