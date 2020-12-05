@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext } from 'react'
 import { todoContext } from '../../../context/todos/todoContext'
 import { useForm } from '../../../hooks/useForm'
 import { uiContext } from '../../../context/ui/uiContext'
@@ -6,18 +6,21 @@ import { taskContext } from '../../../context/task/taskContext'
 import { v4 as uuidv4 } from 'uuid';
 
 export const SelectedTaskForm = () => {
-
-    const  {state, handleChange, resetForm} = useForm({todo: ""})
+    
+    const { state, handleChange, resetForm } = useForm({ todo: ""})
     const { todo } = state
     
     //Distintos context
-    const { newTodo, getTodosActiveProject} = useContext(todoContext)
+    const { newTodo, getTodosActiveProject, todoClicked} = useContext(todoContext)
     const { task } = useContext(taskContext)
     const { errorTask, setErrorTask } = useContext(uiContext)
     
     
-    //Obtener el id de la Task active
     
+    //handleChange
+    
+    //Reset form
+   
     let idTask = task.map(taskId => parseInt(taskId.id))
     const [ number ] = idTask
     
@@ -38,17 +41,20 @@ export const SelectedTaskForm = () => {
     //Submit function
     const handleSubmit = (e) => {
         e.preventDefault()
+
         if(validation()){
-            const newTodoUser = {
-                todo: todo,
-                state: false,
-                taskId: number,
-                id: uuidv4()
-            }
-            newTodo(newTodoUser)
+            
+                const newTodoUser = {
+                    todo: todo,
+                    state: false,
+                    taskId: number,
+                    id: uuidv4()
+                }
+                newTodo(newTodoUser)
+            
             getTodosActiveProject(number)
             resetForm()
-            setErrorTask(null)
+            setErrorTask()
         }
     }
     
@@ -59,7 +65,7 @@ export const SelectedTaskForm = () => {
             <input type="text" placeholder="Agrega una tarea relacionada"
             name="todo" value={todo} className="register__input maincontent__form-input"
             onChange={handleChange}/>
-            <button type="submit" className="register__btn-submit maincontent__form-btn ">Agregar</button>
+            <button type="submit" className="register__btn-submit maincontent__form-btn" value={todoClicked ? "Guardar cambios" : "Agregar"}>Agregar</button>
             {errorTask && <p className="taskScreen__error-msg">{errorTask}</p>}
             </form>
         

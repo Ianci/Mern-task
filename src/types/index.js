@@ -14,5 +14,10 @@ export const types = {
     deleteTodo: '[TODO] DELETE_TODO',
     editTodo: '[TODO] EDIT_TODO',
     activeTodo: '[TODO] ACTIVE_TODO',
-    getTodos: '[TODO] GET_TODOS'
+    getTodos: '[TODO] GET_TODOS',
+
+    changeStateTodo: '[TODO] CHANGE_STATE',
+    actualTodo: '[TODO] ACTUAL_TODO',
+    updateTodo: '[TODO] UPDATE_TODO'
+    
 }

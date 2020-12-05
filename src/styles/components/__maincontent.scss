@@ -51,7 +51,12 @@
     margin: 1em;
     padding: 0.3em;
 }
-.maincontent_todo-name{
+.maincontent_todo-name-incomplete{
     font-size: 1.3rem;
     
+}
+.maincontent_todo-name-complete{
+    font-size: 1.3rem;
+    text-decoration: line-through;
+    color: #4B4E58;
 }

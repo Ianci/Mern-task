@@ -12,6 +12,7 @@ export const TodoState = props => {
             {id: 3, todo: "madre", state: false , taskId: 3}
         ,],
         todosForCurrentTask: null,
+       
     }
 
     const [state, dispatch] = useReducer(todoReducer, initialState)
@@ -55,19 +56,30 @@ export const TodoState = props => {
             payload: todo
         })
     }
+    //Change state to completed
+    const changeState = (todo) => {
+        dispatch({
+            type: types.changeStateTodo,
+            payload: todo
+        })
+    }
   
+ 
     
     return (
         
         <todoContext.Provider value={{
             todos: state.todos,
             activeTodo: state.todo,
+            todoClicked: state.todoClicked,
             todosForCurrentTask: state.todosForCurrentTask,
             getTodosActiveProject,
             editTodo,
             deleteTodo,
             newTodo,
-            todoActive
+            todoActive,
+            changeState,
+            
         }}>
             {props.children}
         </todoContext.Provider>

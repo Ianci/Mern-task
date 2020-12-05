@@ -18,7 +18,13 @@ export const todoReducer = (state, action) => {
                 ...state,
                 todos: state.todos.filter(todo => todo.id !== payload)
             } 
-    
+        case types.changeStateTodo:
+            
+            return {
+                ...state,
+                todos: state.todos.map(todo => todo.id === payload.id ? payload : todo )
+            }
+       
         default:
             return state
     }
