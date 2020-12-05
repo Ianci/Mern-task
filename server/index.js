@@ -5,9 +5,12 @@ const app = express();
  
 //Conectar a la BD
 connectDB();
+
+//Habilitar express.json
+app.use(express.json({ extended: true}));
 //Puerto de la App
 const PORT = process.env.port || 4000;
-//Definir página principal
+
  
 //Routes import 
 
