@@ -9,6 +9,10 @@ connectDB();
 const PORT = process.env.port || 4000;
 //Definir página principal
  
+//Routes import 
+
+app.use('/api/users', require('./routes/users'));
+
 app.get('/', (req, res)=> {
     res.send("Testing")
 })
