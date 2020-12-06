@@ -10,6 +10,8 @@ exports.createTask = async (req, res) => {
 
     try {
         const task = new Task(req.body);
+        task.author = req.user.id
+        
         task.save();
         res.json(task);
 

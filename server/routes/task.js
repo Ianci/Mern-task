@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const taskController = require('../controllers/taskController')
 const { check } = require('express-validator')
+const auth = require('../middlewares/auth')
+
 
 //api/task
 router.post('/',
@@ -11,6 +13,7 @@ router.post('/',
     check("task", 'maximum 15 characters allowed').isLength({ max: 15}),
     
 ],
+auth,
 taskController.createTask
 )
 
