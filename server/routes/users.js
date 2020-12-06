@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 const { check } = require('express-validator')
 const userController = require('../controllers/userController')
+
+
 //User creation
 //Recibe un request del tipo post a esta url /api/users
 router.post('/', 

@@ -26,6 +26,7 @@ exports.createUser = async (req, res) => {
        const salt = await bcryptjs.genSalt(10)
        user.password = await bcryptjs.hash(password, salt)
        user.repeat = await bcryptjs.hash(repeat, salt)
+       
        await user.save()
 
        //JWT

@@ -15,6 +15,9 @@ const PORT = process.env.port || 4000;
 //Routes import 
 
 app.use('/api/users', require('./routes/users'));
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/task', require('./routes/task'));
+
 
 app.get('/', (req, res)=> {
     res.send("Testing")
