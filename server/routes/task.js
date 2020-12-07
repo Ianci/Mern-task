@@ -17,4 +17,27 @@ auth,
 taskController.createTask
 )
 
+router.get('/',
+    auth,
+    taskController.getTasks
+)
+
+router.put('/:id',
+    auth,
+    [
+  
+        check("task", 'Please fill this input').not().isEmpty(),
+        check("task", 'maximum 15 characters allowed').isLength({ max: 15}),
+        
+    ],
+
+    taskController.updateTask
+)
+
+
+router.delete('/:id', 
+    auth,
+    taskController.deleteTask
+);
+
 module.exports = router
