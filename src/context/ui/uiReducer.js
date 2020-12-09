@@ -20,6 +20,11 @@ export const uiReducer = (state , actions ) => {
             ...state,
             errorTodo: payload
         }
+        case types.setErrorApi:
+            return {
+                ...state,
+                errorApi: payload
+            }
         default:
             return state
     }

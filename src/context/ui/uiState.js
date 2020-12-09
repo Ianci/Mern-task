@@ -7,7 +7,8 @@ export const UiState = props => {
     const initialState = {
         errorTask: null,
         error: null,
-        errorTodo: null
+        errorTodo: null,
+        errorRegister: null
     }
 
     const [state, dispatch] = useReducer(uiReducer, initialState)

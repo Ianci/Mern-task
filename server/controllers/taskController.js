@@ -47,7 +47,7 @@ exports.updateTask = async( req, res ) => {
     try {
         //Id
         let task = await Task.findById(req.params.id)
-        //If task exist
+        //If task does not exist
         if(!task){
             return res.status(404).json({ msg : 'Task not found'})
         }

@@ -10,7 +10,7 @@ router.post('/',
 [
   
     check("task", 'Please fill this input').not().isEmpty(),
-    check("task", 'maximum 15 characters allowed').isLength({ max: 15}),
+    check("task", 'maximum 20 characters allowed').isLength({ max: 20}),
     
 ],
 auth,

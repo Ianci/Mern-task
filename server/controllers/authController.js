@@ -43,3 +43,13 @@ exports.authUser = async (req,res) => {
         res.status(400).send('There was an error during the login')
     }
 }
+
+exports.getUser = async (req, res) => {
+    try {
+       const user = User.findById(req.user.id);
+       res.json({ user })
+    } catch (error) {
+        console.log(error)
+        res.status(400).send('There was an error during the login')
+    }
+}

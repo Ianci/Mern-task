@@ -7,7 +7,7 @@ export const types = {
     setError: '[ERROR] SET_ERROR_FORM',
     setErrorTask: '[ERROR] SET_ERROR_TASK',
     setErrorTodo: '[ERROR] SET_ERROR_TODO',
-
+    setErrorApi: '[ERROR] SET_ERROR_API',
 
     newTodo : '[TODO] NEW_TODO',
     getTodosActiveProject: '[TODO] GET_TODOS',
@@ -18,6 +18,12 @@ export const types = {
 
     changeStateTodo: '[TODO] CHANGE_STATE',
     actualTodo: '[TODO] ACTUAL_TODO',
-    updateTodo: '[TODO] UPDATE_TODO'
-    
+    updateTodo: '[TODO] UPDATE_TODO',
+
+    succesfullRegister : '[AUTH] SUCCESS_REGISTER',
+    errorRegisterApi: '[AUTH] ERROR_REGISTER',
+    getUser: '[AUTH] GET_USER',
+    succesfullLogin: '[AUTH] SUCCESFULL_LOGIN',
+    errorLogin: '[AUTH] ERROR_LOGIN',
+    logOut: '[AUTH] LOGOUT',
 }

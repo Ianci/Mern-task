@@ -1,14 +1,27 @@
-import React, {useState,useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm'
 import { uiContext } from '../../context/ui/uiContext'
+import { authContext } from '../../context/auth/authContext'
+import { useHistory } from 'react-router-dom'
+
 export const RegisterForm = () => {
-  
+    const history = useHistory()
+    const authCont = useContext(authContext)
+    const { registerUser, message, auth } = authCont
+
     const uiContextState = useContext(uiContext)
     const { setError, error } = uiContextState
     //Custom hook
     const { state, handleChange, resetForm } = useForm({ name: "", email: "", password: "", repeat: ""})
     const { name, email, password, repeat } = state
+
+    //If auth changes to true, redirect user to home
+    useEffect(() => {
+       if(auth){
+           history.push('/home')
+       }
+    }, [auth, history])
 
     const validation = () => {
         if(name.trim() === ""){
@@ -43,6 +56,8 @@ export const RegisterForm = () => {
         if(validation()){
             resetForm()
             setError(null)
+            registerUser(state)
+
         }
     }
     return (
@@ -59,6 +74,7 @@ export const RegisterForm = () => {
             >Crear cuenta</button>
             <p className="register__paragraph-desc already">Ya tienes cuenta? Ingresa <Link to="/login" style={{textDecoration: "none"}}><strong className="register__paragraph-desc-t">acá</strong></Link></p>
             {error && <p className="taskScreen__error-msg">{error}</p>}
+            {message && <p className="taskScreen__error-msg">{message}</p>}
         </form>
     )
 }
