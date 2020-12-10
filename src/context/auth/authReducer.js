@@ -7,11 +7,22 @@ export const authReducer = (state, action) => {
         case types.succesfullLogin:
         case types.succesfullRegister:
             localStorage.setItem('token', payload)
+        
             return {
                 ...state,
                 auth: true,
                 message: null,
-                token: payload
+                token: payload,
+                isAuth: true
+           
+            }
+        case types.taskScreenPage: 
+            return {
+                ...state,
+                auth: true,
+                message: null,
+                isAuth: true
+
             }
         case types.errorLogin:
             return{
@@ -19,19 +30,37 @@ export const authReducer = (state, action) => {
                 token: null,
                 messageLogin: payload,
                 auth: false,
+                isAuth: false
+            }
+        case types.logOut:
+            localStorage.removeItem('token')
+            
+            return{
+                ...state,
+                token: null,
+                auth: false,
+                isAuth: false,
+                user: null,
+                message: null,
+                messageLogin: null
             }
         case types.errorRegisterApi:
             localStorage.removeItem('token')
+           
             return {
                 ...state,
                 token: null,
                 message: payload,
-                auth: false
+                auth: false,
+                isAuth: false
             }
         case types.getUser: 
+        
         return {
             ...state,
-            user: payload
+            user: payload,
+            isAuth: true,
+            auth: true
         }
         default:
             return state;

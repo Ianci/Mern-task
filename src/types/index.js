@@ -26,4 +26,6 @@ export const types = {
     succesfullLogin: '[AUTH] SUCCESFULL_LOGIN',
     errorLogin: '[AUTH] ERROR_LOGIN',
     logOut: '[AUTH] LOGOUT',
+
+    taskScreenPage: '[AUTH] TASK_SCREEN'
 }

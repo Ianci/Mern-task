@@ -57,7 +57,7 @@ export const RegisterForm = () => {
             resetForm()
             setError(null)
             registerUser(state)
-
+            history.push('/home')
         }
     }
     return (

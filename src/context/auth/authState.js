@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { authContext } from './authContext';
 import { authReducer } from './authReducer';
 import { types } from '../../types';
@@ -12,11 +12,13 @@ export const AuthState = props => {
         token: localStorage.getItem('token'),
         auth: null,
         user: null,
+        isAuth: false,
         message: null,
         messageLogin: null
     }
     const [state, dispatch] = useReducer(authReducer, initialState)
 
+  
 
     const registerUser = async values => {
         try {
@@ -49,7 +51,7 @@ export const AuthState = props => {
 
         try {
             const response = await axiosClient.get('/api/auth')
-            console.log(response.data.user)
+            
             dispatch({
                 type: types.getUser,
                 payload: response.data.user
@@ -76,6 +78,7 @@ export const AuthState = props => {
             })
 
             authenticatedUser()
+            
         } catch (error) {
             
             console.log(error.response)
@@ -86,16 +89,33 @@ export const AuthState = props => {
             })
         }
     }
+
+    //Task screen action
+    const taskScreenFunction = () => {
+        dispatch({
+            type: types.taskScreenPage
+        })
+    }
+
+    const logOutUser = () => {
+        dispatch({
+            type: types.logOut
+        })
+    }
     return (
         <authContext.Provider 
         value={{
         token: state.token,
         auth: state.auth,
         user: state.user,
+        isAuth: state.isAuth,
         message: state.message,
         messageLogin: state.messageLogin,
         registerUser,
-        userLogin
+        userLogin,
+        authenticatedUser,
+        taskScreenFunction,
+        logOutUser
         }}
         >
             {props.children}
