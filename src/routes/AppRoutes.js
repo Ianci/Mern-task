@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { TaskScreen } from '../components/main/TaskScreen'
 import { PrivateRoute } from './PrivateRoutes'
@@ -10,19 +10,18 @@ import { Register } from '../components/auth/Register'
 
 export const AppRoutes = () => {
 
-    
     return (
         <Router>
             <div>
             
             <Switch>
-            <PublicRoute exact path="/" component={Register}/>
-            <PublicRoute  path="/login" component={Login}/>
-            <Route path="/home" component={TaskScreen}/>
+            <Route  exact path="/"  component={Register}/>
+            <Route   path="/login"  component={Login}/>
+            <Route path="/home"  component={TaskScreen}/>
             <Redirect to="/login" />
             </Switch>
             </div>
         </Router>
-        
+         
     )
 }
