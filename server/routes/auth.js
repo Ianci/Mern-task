@@ -5,13 +5,7 @@ const { check } = require('express-validator')
 const auth = require('../middlewares/auth')
 //api/auth
 router.post('/',
-[
-  
-    check('email', 'Please add a valid email').isEmail(),
-    check("password", 'Please insert your password').not().isEmpty(),
-   
-    
-],
+
 authController.authUser
 )
 

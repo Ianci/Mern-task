@@ -4,6 +4,7 @@ export const authReducer = (state, action) => {
     const { type, payload } = action
 
     switch (type) {
+        case types.succesfullLogin:
         case types.succesfullRegister:
             localStorage.setItem('token', payload)
             return {
@@ -13,6 +14,12 @@ export const authReducer = (state, action) => {
                 token: payload
             }
         case types.errorLogin:
+            return{
+                ...state,
+                token: null,
+                messageLogin: payload,
+                auth: false,
+            }
         case types.errorRegisterApi:
             localStorage.removeItem('token')
             return {
@@ -21,6 +28,11 @@ export const authReducer = (state, action) => {
                 message: payload,
                 auth: false
             }
+        case types.getUser: 
+        return {
+            ...state,
+            user: payload
+        }
         default:
             return state;
     }

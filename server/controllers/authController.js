@@ -44,9 +44,10 @@ exports.authUser = async (req,res) => {
     }
 }
 
+
 exports.getUser = async (req, res) => {
     try {
-       const user = User.findById(req.user.id);
+       const user = await User.findById(req.user.id).select('-password -repeat');
        res.json({ user })
     } catch (error) {
         console.log(error)

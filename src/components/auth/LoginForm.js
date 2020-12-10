@@ -1,14 +1,28 @@
-import React, { useContext} from 'react'
+import React, { useContext, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm'
 import { uiContext } from '../../context/ui/uiContext'
+import { authContext } from '../../context/auth/authContext';
+import { useHistory } from 'react-router-dom';
+
 export const LoginForm = () => {
+    const history = useHistory()
+    //Custom hook
     const { state, handleChange, resetForm } = useForm({ email: "", password: ""})
     const { email, password } = state
+    //Context
     const { setError, error } = useContext(uiContext)
+    const authCon = useContext(authContext)
+    const { userLogin, messageLogin, auth } = authCon
+
+    useEffect(() => {
+        if(auth){
+            history.push('/home')
+        }
+    }, [auth, history])
 
     const validation = () => {
-        if(email.trim()=== ""){
+        if(email.trim() === ""){
             setError('Introduce tu email')
             return false;
         } else {
@@ -24,11 +38,12 @@ export const LoginForm = () => {
         if(validation()){
             resetForm()
             setError(null)
-            console.log('Form submitted')
+            userLogin(state)
         }
     }
 
     return (
+
     <form className="register__form-form"
     onSubmit={handleSubmit}>
        
@@ -44,6 +59,7 @@ export const LoginForm = () => {
         {error && <p className="taskScreen__error-msg">{error}</p>}
         <p className="login__paragraph-margin">Aún no tienes cuenta? Regístrate <Link to="/" style={{textDecoration: "none"}}><strong className="register__paragraph-desc-t">acá</strong></Link></p>
         </div>
+        {messageLogin && <p className="taskScreen__error-msg">{messageLogin}</p>}
     </form>
     )
 }
