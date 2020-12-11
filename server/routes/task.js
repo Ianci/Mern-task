@@ -7,12 +7,7 @@ const auth = require('../middlewares/auth')
 
 //api/task
 router.post('/',
-[
-  
-    check("task", 'Please fill this input').not().isEmpty(),
-    check("task", 'maximum 20 characters allowed').isLength({ max: 20}),
-    
-],
+
 auth,
 taskController.createTask
 )

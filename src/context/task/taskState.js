@@ -2,14 +2,16 @@ import React, { useReducer } from 'react'
 import { types } from '../../types'
 import { taskContext } from './taskContext'
 import { taskReducer } from './taskReducer'
+import axiosClient from '../../config/axios';
 
 
 export const TaskState = props => {
 
-    const tasks  = [{name: "Learn Context" ,id: 1}, {name: "Learn Redux", id: 2}, {name:"Learn React", id: 3}]
+   
     const initialState = {
         tasks: [],
-        task: null
+        task: null,
+        error: null
     }
 
     //Dispatch para ejecutar las acciones 
@@ -17,19 +19,41 @@ export const TaskState = props => {
 
     //Functions para el CRUD del proyect
     //getTasks
-    const getTask = () => {
-        dispatch({
-            type: types.getTasks,
-            payload: tasks
-        })
-    }
-    //newTasks
-    const newTask = (task) => {
+    const getTask = async () => {
+       try {
+        const response = await axiosClient.get('/api/task')
         
         dispatch({
-            type: types.newTask,
-            payload: task
+            type: types.getTasks,
+            payload: response.data.tasks
         })
+       } catch (error) {
+           
+        let alert = 'Hubo un error'
+        dispatch({
+            type: types.errorApi,
+            payload: alert
+        })
+       }
+    }
+
+    //newTasks
+    const newTask = async (task) => {
+        
+        try {
+            const response = await axiosClient.post('/api/task', task)
+            console.log(response.data)
+            dispatch({
+                type: types.newTask,
+                payload: response.data
+            })
+        } catch (error) {
+            let alert = 'Hubo un error'
+            dispatch({
+            type: types.errorApi,
+            payload: alert
+        })
+        }
     }
 
     //activeTask
@@ -41,11 +65,20 @@ export const TaskState = props => {
     }
 
     //Delete task
-    const deleteTask = task => {
+    const deleteTask = async id => {
+       try {
+        await axiosClient.delete(`/api/task/${id}`)
         dispatch({
             type: types.deleteTaskActive,
-            payload: task
+            payload: id
         })
+       } catch (error) {
+        let alert = 'Hubo un error'
+        dispatch({
+            type: types.errorApi,
+            payload: alert
+        })
+       }
     }
 
     return (
@@ -54,6 +87,7 @@ export const TaskState = props => {
             tasks: state.tasks,
             showForm: state.showForm,
             task: state.task,
+            error: state.error,
             getTask,
             newTask,
             activeTask,

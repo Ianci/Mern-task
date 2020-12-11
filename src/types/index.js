@@ -2,7 +2,8 @@ export const types = {
     getTasks: '[TASKS] GET_TASKS_ACTION',
     newTask: '[TASKS] NEW_TASK_ACTION',
     activeTask: '[TASKS] ACTIVE_TASK_ACTION',
-    deleteTaskActive: '[TASKS] DEELTE_TASK_ACTION',
+    deleteTaskActive: '[TASKS] DELETE_TASK_ACTION',
+    errorApi: '[TASK] ERRO_API',
 
     setError: '[ERROR] SET_ERROR_FORM',
     setErrorTask: '[ERROR] SET_ERROR_TASK',

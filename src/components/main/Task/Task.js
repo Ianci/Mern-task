@@ -12,15 +12,16 @@ export const Task = ({task}) => {
         
     }
 
+    console.log(task)
     return (
         
         <div className="tasks__singletask">
 
         <li className="task__li">
-            <p className="taskScreen__paragraph" onClick={() =>  handleActiveTaskAndGetTodos(task.id)}>{task.name}</p>
+            <p className="taskScreen__paragraph" onClick={() =>  handleActiveTaskAndGetTodos(task._id)}>{task.task}</p>
         </li>
         <span className="taskScreen__span"
-        onClick={()=> deleteTask(task)}>x</span>
+        onClick={()=> deleteTask(task._id)}>x</span>
         </div>
     )
 }

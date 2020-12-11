@@ -22,7 +22,7 @@ export const ListTask = () => {
         <TransitionGroup>
         {tasks.map(task=>(
             <CSSTransition
-                key={task.id}
+                key={task._id}
                 timeout={100}
                 classNames="item"
                 >

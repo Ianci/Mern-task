@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { taskContext } from '../../context/task/taskContext'
 import { uiContext } from '../../context/ui/uiContext'
 import { useForm } from '../../hooks/useForm'
-import { v4 as uuidv4 } from 'uuid';
+
 
 export const SidebarForm = () => {
     //LocalState del formulario 
@@ -14,16 +14,16 @@ export const SidebarForm = () => {
     const taskContextState = useContext(taskContext)
     const { newTask } = taskContextState
     //Custom hook
-    const {state, handleChange, resetForm} = useForm({todo: ""})
-    const { todo } = state
+    const {state, handleChange, resetForm} = useForm({task: ""})
+    const { task } = state
 
     //Validation
     const validation = () => {
-        if(todo.trim() === ""){
+        if(task.trim() === ""){
             setErrorTodo('Por favor completa este campo')
             return false
         }
-        else if(todo.length > 15){
+        else if(task.length > 15){
             setErrorTodo('Límite de 15 caracteres excedidos')
             return false
         }
@@ -37,11 +37,8 @@ export const SidebarForm = () => {
     const handleSubmit = e => {
         e.preventDefault()
         if(validation()){
-            const newTaskObj = {
-                name: todo,
-                id: uuidv4()
-            }
-            newTask(newTaskObj)
+           
+            newTask(state)
             setErrorTodo(null)
             resetForm()
         }
@@ -54,7 +51,7 @@ export const SidebarForm = () => {
                 showForm && 
                 (
                     <form className="taskScreen-sidebarForm" onSubmit={handleSubmit}>
-                        <input type="text" className="register__input" placeholder="Tema de la/s tarea" name="todo" value={todo}onChange={handleChange} />
+                        <input type="text" className="register__input" placeholder="Tema de la/s tarea" name="task" value={task}onChange={handleChange} />
                         
                         <button type="submit" className="register__btn-submit" >Agregar</button>
                     </form>

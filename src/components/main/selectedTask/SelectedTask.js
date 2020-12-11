@@ -9,14 +9,14 @@ export const SelectedTask = () => {
      
     if(!task) return <LandingPage />
 
-    let name = task.map(taskname => taskname.name)
+    let name = task.map(taskname => taskname.task)
     
     
     return (
         <div>
             <h1 className="navbar__logo maincontent__h1">{name}</h1>
            
-            <SelectedTaskForm />   
+            <SelectedTaskForm />    
 
             <TaskList />
         </div>
