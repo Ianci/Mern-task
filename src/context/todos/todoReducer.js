@@ -6,23 +6,23 @@ export const todoReducer = (state, action) => {
         case types.getTodosActiveProject: 
         return {
             ...state,
-            todosForCurrentTask: state.todos.filter(todo => todo.taskId === payload)
+            todosForCurrentTask: payload
         }
         case types.newTodo:
             return{
                 ...state,
-                todos: [...state.todos, payload]
+                todosForCurrentTask: [...state.todosForCurrentTask, payload]
             }
         case types.deleteTodo:
             return {
                 ...state,
-                todos: state.todos.filter(todo => todo.id !== payload)
+                todosForCurrentTask: state.todosForCurrentTask.filter(todo => todo._id !== payload)
             } 
         case types.changeStateTodo:
             
             return {
                 ...state,
-                todos: state.todos.map(todo => todo.id === payload.id ? payload : todo )
+                todosForCurrentTask: state.todosForCurrentTask.map(todo => todo._id === payload.id ? payload : todo )
             }
        
         default:

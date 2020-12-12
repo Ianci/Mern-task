@@ -23,7 +23,7 @@ app.use('/api/task', require('./routes/task'));
 app.use('/api/todo', require('./routes/todo'));
 
 app.get('/', (req, res)=> {
-    res.send("Testing")
+    res.send("What the fuck is this")
 })
 //Arrancando la App
 app.listen(PORT, () => { console.log(`El server está funcionando en el puerto ${PORT}`)})

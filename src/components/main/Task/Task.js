@@ -12,7 +12,7 @@ export const Task = ({task}) => {
         
     }
 
-    console.log(task)
+   
     return (
         
         <div className="tasks__singletask">

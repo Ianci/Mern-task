@@ -14,16 +14,13 @@ export const SelectedTaskForm = () => {
     const { newTodo, getTodosActiveProject, todoClicked} = useContext(todoContext)
     const { task } = useContext(taskContext)
     const { errorTask, setErrorTask } = useContext(uiContext)
+  
     
-    
-    
-    //handleChange
-    
-    //Reset form
-   
-    let idTask = task.map(taskId => parseInt(taskId.id))
+   //Extraemos la id del Task actual
+    let idTask = task.map(taskId => (taskId._id))
     const [ number ] = idTask
-    
+    console.log(number)
+
     //Validacion
     const validation = () => {
         if(todo.trim() === ""){
@@ -36,7 +33,7 @@ export const SelectedTaskForm = () => {
         return true
     }
 
-    //Eliminar una tarea
+ 
     
     //Submit function
     const handleSubmit = (e) => {
@@ -44,14 +41,9 @@ export const SelectedTaskForm = () => {
 
         if(validation()){
             
-                const newTodoUser = {
-                    todo: todo,
-                    state: false,
-                    taskId: number,
-                    id: uuidv4()
-                }
-                newTodo(newTodoUser)
-            
+            state.task = number
+            newTodo(state)
+            //Se ejecuta y nos trae las tareas del task activo
             getTodosActiveProject(number)
             resetForm()
             setErrorTask()
@@ -60,7 +52,6 @@ export const SelectedTaskForm = () => {
     
     return (
         <div className="maincontent__formTask">
-
             <form onSubmit={handleSubmit} className="maincontent__form-box">
             <input type="text" placeholder="Agrega una tarea relacionada"
             name="todo" value={todo} className="register__input maincontent__form-input"

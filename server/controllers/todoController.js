@@ -42,8 +42,8 @@ exports.createTodo = async (req, res) => {
 
 exports.getTodos = async (req, res) => {
     try {
-        const { task } = req.body;
-
+        const { task } = req.query;
+        console.log(task)
         //Is there a task ?
         const filteredTask = await Task.findById(task)
         if(!filteredTask){

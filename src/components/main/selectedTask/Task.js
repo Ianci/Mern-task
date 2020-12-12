@@ -1,27 +1,26 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { taskContext } from '../../../context/task/taskContext'
 import { todoContext } from '../../../context/todos/todoContext'
 
 
 export const Todo = ({todo}) => {
-    //LocalState for todo complete/incomplete
-   
+    
     //todoContext
-    const { deleteTodo, getTodosActiveProject, saveActualTodo, changeState} = useContext(todoContext)
+    const { deleteTodo, getTodosActiveProject, changeState} = useContext(todoContext)
     //taskContext
     const context = useContext(taskContext)
     const { task } = context
     //Extraemos el id 
-    let idTask = task.map(taskactive => parseInt(taskactive.id))
-    const [ idInteger ] = idTask
-    console.log(idInteger)
-
+    let idTask = task.map(taskactive => (taskactive._id))
+    const [idid] = idTask
+    
+    
     //Eliminar todo
     const deleteCurrentTodo = id => {
         //Eliminar la tarea con su id personal
         deleteTodo(id)
         //Recargar la página con el id del task
-        getTodosActiveProject(idInteger)
+        getTodosActiveProject(idid)
     }
 
     //Cambiar el estado de true a false y viceversa
@@ -34,8 +33,8 @@ export const Todo = ({todo}) => {
     changeState(actualTodo)
    }
    //Destructuring state and id of todo
-    const { state, id } = todo
-
+    const { state, _id } = todo
+    
    //Guardando la tarea actual para luego editarla
 
 
@@ -49,7 +48,7 @@ export const Todo = ({todo}) => {
             <button type="button" className={state ? "register__btn-submit-completed" :"register__btn-submit"} onClick={() => changeTodoState(todo)}>Incompleto</button>
         }
             
-            <button type="button" className="register__btn-submit" onClick={()=> deleteCurrentTodo(id)}>Delete</button>
+            <button type="button" className="register__btn-submit" onClick={()=> deleteCurrentTodo(_id)}>Delete</button>
             
             </div>
         </div>

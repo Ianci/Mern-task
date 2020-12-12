@@ -2,17 +2,14 @@ import React, { useReducer } from 'react';
 import { types } from '../../types'
 import { todoContext } from './todoContext'
 import { todoReducer } from './todoReducer'
+import axiosClient from '../../config/axios';
 
 export const TodoState = props => {
     
     const initialState = {
-        todos: [ 
-            {id: 1, todo: "La concha de tu madre", state: false , taskId: 1},
-            {id: 2, todo: "La concha tu madre", state: false , taskId: 2},
-            {id: 3, todo: "madre", state: false , taskId: 3}
-        ,],
-        todosForCurrentTask: null,
-       
+        
+        todosForCurrentTask: [],
+        activeTodo: null
     }
 
     const [state, dispatch] = useReducer(todoReducer, initialState)
@@ -20,11 +17,18 @@ export const TodoState = props => {
     //Functions
 
     //Todos active project
-    const getTodosActiveProject = (id) => {
-        dispatch({
-            type: types.getTodosActiveProject,
-            payload: id
-        })
+    const getTodosActiveProject = async task => {
+        try {
+            const response = await axiosClient.get('/api/todo', { params : { task }})
+            
+            dispatch({
+                type: types.getTodosActiveProject,
+                payload: response.data.todos
+            })  
+        } catch (error) {
+            console.log(error)
+        }
+        
     }
     //todo active  
     const todoActive = (todo) => {
@@ -34,19 +38,31 @@ export const TodoState = props => {
         })
     }
     //Add todo
-    const newTodo = (todo) => {
-        dispatch({
-            type: types.newTodo,
-            payload: todo
-        })
+    const newTodo = async (todo) => {
+        try {
+            await axiosClient.post('/api/todo', todo)
+            
+            dispatch({
+                type: types.newTodo,
+                payload: todo
+            })     
+        } catch (error) {
+            console.log(error)
+        }
+       
     }
 
     //Delete task
-    const deleteTodo = (todoId) => {
-        dispatch({
-            type: types.deleteTodo,
-            payload: todoId
-        })
+    const deleteTodo =  async (todoId) => {
+        try {
+            await axiosClient.delete(`/api/todo/${todoId}`)
+            dispatch({
+                type: types.deleteTodo,
+                payload: todoId
+            })
+        } catch (error) {
+            
+        }
     }
 
     //Edit task
@@ -69,9 +85,8 @@ export const TodoState = props => {
     return (
         
         <todoContext.Provider value={{
-            todos: state.todos,
+           
             activeTodo: state.todo,
-            todoClicked: state.todoClicked,
             todosForCurrentTask: state.todosForCurrentTask,
             getTodosActiveProject,
             editTodo,
