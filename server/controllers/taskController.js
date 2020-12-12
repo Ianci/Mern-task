@@ -1,7 +1,7 @@
 const Task = require('../models/TaskModel')
 const { validationResult } = require('express-validator')
 
-
+//Crear Task
 exports.createTask = async (req, res) => {
    
     try {
@@ -16,7 +16,7 @@ exports.createTask = async (req, res) => {
         res.status(500).send('There was an error')
     }
 }
-
+//Obtener task de la bd que coincidan con el id del author 
 exports.getTasks = async (req,res) => {
     try {
         const tasks = await Task.find({ author: req.user.id})

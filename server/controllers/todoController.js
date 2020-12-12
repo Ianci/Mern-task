@@ -42,8 +42,10 @@ exports.createTodo = async (req, res) => {
 
 exports.getTodos = async (req, res) => {
     try {
+        //Va query en vez de body porque lo estamos pasando como params
+        //Task es la id del task, no su nombre
         const { task } = req.query;
-        console.log(task)
+        
         //Is there a task ?
         const filteredTask = await Task.findById(task)
         if(!filteredTask){
@@ -99,9 +101,6 @@ exports.updateTodo = async (req, res ) => {
 
 exports.deleteTodo = async ( req, res ) => {
     try {
-
-        
-
         let todo = await Todo.findById(req.params.id);
 
         if(!todo){

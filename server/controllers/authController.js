@@ -18,6 +18,7 @@ exports.authUser = async (req,res) => {
         }
 
         const successPassword = await bcryptjs.compare(password, user.password)
+        
         if(!successPassword){
             return res.status(400).json({ msg: 'The password is incorrect'})
         }

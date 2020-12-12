@@ -23,6 +23,7 @@ export const RegisterForm = () => {
        }
     }, [auth, history])
 
+    //Form validation
     const validation = () => {
         if(name.trim() === ""){
             setError('Por favor introduce tu nombre')
@@ -51,6 +52,7 @@ export const RegisterForm = () => {
         
         return true;
     }
+    //Submit
     const handleSubmit = e => {
         e.preventDefault()
         if(validation()){

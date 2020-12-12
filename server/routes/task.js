@@ -7,7 +7,6 @@ const auth = require('../middlewares/auth')
 
 //api/task
 router.post('/',
-
 auth,
 taskController.createTask
 )

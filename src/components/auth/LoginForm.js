@@ -55,7 +55,7 @@ export const LoginForm = () => {
        
         <div className="login__p-container">
 
-        <button type="submit" className="login__btn-margin">Crear cuenta</button>
+        <button type="submit" className="login__btn-margin">Ingresar</button>
         {error && <p className="taskScreen__error-msg">{error}</p>}
         <p className="login__paragraph-margin">Aún no tienes cuenta? Regístrate <Link to="/" style={{textDecoration: "none"}}><strong className="register__paragraph-desc-t">acá</strong></Link></p>
         </div>
