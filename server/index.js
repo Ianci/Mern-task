@@ -12,7 +12,7 @@ app.use(cors());
 //Habilitar express.json
 app.use(express.json({ extended: true}));
 //Puerto de la App
-const PORT = process.env.port || 4000;
+const port = process.env.port || 4000;
 
  
 //Routes import 
@@ -26,4 +26,4 @@ app.get('/', (req, res)=> {
     res.send("Server on")
 })
 //Arrancando la App
-app.listen(PORT, () => { console.log(`El server está funcionando en el puerto ${PORT}`)})
+app.listen(port, '0.0.0.0', () => { console.log(`El server está funcionando en el puerto ${PORT}`)})
