@@ -1,4 +1,4 @@
-https://mern-taskmanager-ian.netlify.app/login
+https://mern-taskmanager-ian.netlify.app/
 
 Administrador de tareas
 
@@ -14,4 +14,4 @@ MongoDb
 Back deployed en Heroku
 Front deployed en Netlify
 
-https://mern-taskmanager-ian.netlify.app/login
+https://mern-taskmanager-ian.netlify.app/
